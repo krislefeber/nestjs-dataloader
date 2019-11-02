@@ -1,6 +1,6 @@
 {
   "name": "nestjs-dataloader",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A NestJS decorator for dataloader",
   "author": "Kris Lefeber <krislefeber@gmail.com>",
   "license": "MIT",

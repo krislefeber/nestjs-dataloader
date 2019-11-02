@@ -70,9 +70,9 @@ import { Loader } from 'nestjs-dataloader';
 export class AccountResolver {
 
     @Query(() => [Account])
-    public async getAccounts(
+    public getAccounts(
         @Args({ name: 'ids', type: () => [String] }) ids: string[],
-        @Loader(AccountLoader.name) accountLoader: DataLoader<Employee['id'], Account>) {
+        @Loader(AccountLoader.name) accountLoader: DataLoader<Account['id'], Account>): Promise<Account[]> {
         return accountLoader.loadMany(ids);
     }
 }

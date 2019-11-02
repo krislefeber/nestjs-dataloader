@@ -2,7 +2,7 @@ import DataLoader from 'dataloader';
 import { NestInterceptor, ExecutionContext, CallHandler, InternalServerErrorException, createParamDecorator } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import { ModuleRef, APP_INTERCEPTOR } from '@nestjs/core';
-import { GqlExecutionContext, GraphQLExecutionContext } from '@nestjs/graphql';
+import { GqlExecutionContext } from '@nestjs/graphql';
 import { Observable } from 'rxjs';
 
 /**
@@ -37,7 +37,7 @@ export class DataLoaderInterceptor implements NestInterceptor {
      * @inheritdoc
      */
     intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-        const graphqlExecutionContext: GraphQLExecutionContext = GqlExecutionContext.create(context);
+        const graphqlExecutionContext = GqlExecutionContext.create(context);
         const ctx: any = graphqlExecutionContext.getContext();
 
         if (ctx[NEST_LOADER_CONTEXT_KEY] === undefined) {

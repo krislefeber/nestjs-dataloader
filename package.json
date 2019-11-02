@@ -1,6 +1,6 @@
 {
   "name": "nestjs-dataloader",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A NestJS decorator for dataloader",
   "author": "Kris Lefeber <krislefeber@gmail.com>",
   "license": "MIT",
@@ -13,14 +13,16 @@
     "@nestjs/common": "^6.4.0",
     "@nestjs/core": "^6.4.0",
     "@nestjs/graphql": "^6.5.3",
-    "apollo-server-express": "2.5.0",
     "dataloader": "^1.4.0",
-    "rxjs": "^6.3.3",
-    "typescript": "3.5.1"
+    "rxjs": "^6.3.3"
   },
   "peerDependencies": {
     "graphql": "^14.1.1",
     "reflect-metadata": "^0.1.12"
+  },
+  "devDependencies": {
+    "apollo-server-express": "2.5.0",
+    "typescript": "3.5.1"
   },
   "types": "index.d.ts",
   "main": "dist/index.js",

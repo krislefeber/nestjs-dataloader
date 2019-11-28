@@ -1,4 +1,3 @@
-[![Semver](http://img.shields.io/SemVer/2.0.0.png)](https://img.shields.io/bundlephobia/min/nestjs-dataloader?label=NestJS-Dataloader&style=plastic)
 # NestJS Dataloader
 NestJS dataloader simplifies adding [graphql/dataloader](https://github.com/graphql/dataloader) to your NestJS project. DataLoader aims to solve the common N+1 loading problem.
 

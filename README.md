@@ -34,7 +34,7 @@ export class AccountLoader implements NestDataLoader<string, Account> {
 }
 ```
 
-The first generic of the interface is the type of ID the datastore uses (either string or number). The second generic is the type of object that will be returned. In the above instance, we want ```DataLoader``` to return instances of the ```Account``` class.
+The first generic of the interface is the type of ID the datastore uses. The second generic is the type of object that will be returned. In the above instance, we want ```DataLoader``` to return instances of the ```Account``` class.
 
 ### Providing the NestDataLoader
 For each NestDataLoader we create, we need to provide it to our module.

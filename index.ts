@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
  * This interface will be used to generate the initial data loader.
  * The concrete implementation should be added as a provider to your module.
  */
-export interface NestDataLoader<ID extends (string | number), Type> {
+export interface NestDataLoader<ID, Type> {
     /**
      * Should return a new instance of dataloader each time
      */

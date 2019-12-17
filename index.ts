@@ -1,4 +1,4 @@
-import DataLoader from 'dataloader';
+import * as DataLoader from 'dataloader';
 import { NestInterceptor, ExecutionContext, CallHandler, InternalServerErrorException, createParamDecorator } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import { ModuleRef, APP_INTERCEPTOR } from '@nestjs/core';

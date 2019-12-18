@@ -1,10 +1,10 @@
 {
   "name": "nestjs-dataloader",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "A NestJS decorator for dataloader",
   "author": "Kris Lefeber <krislefeber@gmail.com>",
   "license": "MIT",
-  "repository":  "https://github.com/krislefeber/nestjs-dataloader",
+  "repository": "https://github.com/krislefeber/nestjs-dataloader",
   "scripts": {
     "prebuild": "rm -rf ./dist",
     "build": "tsc -p tsconfig.json",

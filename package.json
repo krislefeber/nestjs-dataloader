@@ -22,7 +22,7 @@
     "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {
-    "apollo-server-express": "2.5.0",
+    "apollo-server-express": "^2.9.16",
     "typescript": "3.5.1"
   },
   "types": "index.d.ts",

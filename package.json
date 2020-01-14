@@ -14,7 +14,7 @@
     "@nestjs/common": "^6.4.0",
     "@nestjs/core": "^6.4.0",
     "@nestjs/graphql": "^6.5.3",
-    "dataloader": "^1.4.0",
+    "dataloader": "^2.0.0",
     "rxjs": "^6.5.4"
   },
   "peerDependencies": {

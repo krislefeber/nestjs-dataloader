@@ -18,9 +18,13 @@ import { Observable } from 'rxjs';
 export interface NestDataLoader<ID, Type> {
   /**
    * Should return a new instance of dataloader each time
-   * @params ctx: the execution context
+   * @params ctx: the graphql execution context
    */
   generateDataLoader(ctx: any): DataLoader<ID, Type>;
+    /**
+   * Should return a new instance of dataloader each time
+   */
+  generateDataLoader(): DataLoader<ID, Type>;
 }
 
 /**

@@ -1,10 +1,10 @@
-import { 
-  CallHandler, 
-  createParamDecorator, 
-  ExecutionContext, 
-  Injectable, 
-  InternalServerErrorException, 
-  NestInterceptor 
+import {
+  CallHandler,
+  createParamDecorator,
+  ExecutionContext,
+  Injectable,
+  InternalServerErrorException,
+  NestInterceptor,
 } from '@nestjs/common';
 import { APP_INTERCEPTOR, ModuleRef } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';

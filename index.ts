@@ -1,4 +1,11 @@
-import { CallHandler, createParamDecorator, ExecutionContext, Injectable, InternalServerErrorException, NestInterceptor } from '@nestjs/common';
+import { 
+  CallHandler, 
+  createParamDecorator, 
+  ExecutionContext, 
+  Injectable, 
+  InternalServerErrorException, 
+  NestInterceptor 
+} from '@nestjs/common';
 import { APP_INTERCEPTOR, ModuleRef } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import DataLoader from 'dataloader';
@@ -27,7 +34,7 @@ const NEST_LOADER_CONTEXT_KEY: string = 'NEST_LOADER_CONTEXT_KEY';
 
 @Injectable()
 export class DataLoaderInterceptor implements NestInterceptor {
-  constructor(private readonly moduleRef: ModuleRef) { }
+  constructor(private readonly moduleRef: ModuleRef) {}
 
   /**
    * @inheritdoc

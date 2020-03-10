@@ -10,9 +10,10 @@ import { APP_INTERCEPTOR, ModuleRef, ContextIdFactory } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import DataLoader from 'dataloader';
 import { Observable } from 'rxjs';
+import { idText } from 'typescript';
 
 /**
- * This interface will be used to generate the initial data loader.
+ * This interface will be used to generate the initial data loader.                
  * The concrete implementation should be added as a provider to your module.
  */
 export interface NestDataLoader<ID, Type> {
@@ -43,19 +44,21 @@ export class DataLoaderInterceptor implements NestInterceptor {
     const ctx: any = graphqlExecutionContext.getContext();
 
     if (ctx[NEST_LOADER_CONTEXT_KEY] === undefined) {
-      ctx[NEST_LOADER_CONTEXT_KEY] = async (type: string) : Promise<NestDataLoader<any, any>> => {
-        if (ctx[type] === undefined) {
-          try {           
-            const contextId = ContextIdFactory.getByRequest(ctx.req);         
-            ctx[type] = (await this.moduleRef
-              .resolve<NestDataLoader<any, any>>(type, contextId, { strict: false }))
-              .generateDataLoader();
-          } catch (e) {
-            throw new InternalServerErrorException(`The loader ${type} is not provided` + e);
+      ctx[NEST_LOADER_CONTEXT_KEY] = {
+        contextId: ContextIdFactory.create(),
+        getLoader: (type: string) : Promise<NestDataLoader<any, any>> => {
+          if (ctx[type] === undefined) {
+            try {           
+              ctx[type] = (async () => { 
+                return (await this.moduleRef.resolve<NestDataLoader<any, any>>(type, ctx[NEST_LOADER_CONTEXT_KEY].contextId, { strict: false }))
+                  .generateDataLoader();
+              })();
+            } catch (e) {
+              throw new InternalServerErrorException(`The loader ${type} is not provided` + e);
+            }
           }
+          return ctx[type];
         }
-
-        return ctx[type];
       };
     }
     return next.handle();
@@ -71,6 +74,5 @@ export const Loader = createParamDecorator(async (data: string, [_, __, ctx]) =>
             You should provide interceptor ${DataLoaderInterceptor.name} globally with ${APP_INTERCEPTOR}
           `);
   }
-
-  return await ctx[NEST_LOADER_CONTEXT_KEY](data);
+  return await ctx[NEST_LOADER_CONTEXT_KEY].getLoader(data);
 });

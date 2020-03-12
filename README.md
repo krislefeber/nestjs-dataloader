@@ -23,7 +23,7 @@ npm install --save nestjs-dataloader
 We start by implementing the `NestDataLoader` interface. This tells `DataLoader` how to load our objects.
 
 ```typescript
-import DataLoader from 'dataloader';
+import * as DataLoader from 'dataloader';
 import { Injectable } from '@nestjs/common';
 import { NestDataLoader } from 'nestjs-dataloader';
 ...
@@ -69,7 +69,7 @@ export class ResolversModule { }
 Now that we have a dataloader and our module is aware of it, we need to pass it as a parameter to an endpoint in our graphQL resolver.
 
 ```typescript
-import DataLoader from 'dataloader';
+import * as DataLoader from 'dataloader';
 import { Loader } from 'nestjs-dataloader';
 ...
 

@@ -6,7 +6,7 @@ import {
   InternalServerErrorException,
   NestInterceptor,
 } from '@nestjs/common';
-import { APP_INTERCEPTOR, ModuleRef, ContextIdFactory } from '@nestjs/core';
+import { APP_INTERCEPTOR, ModuleRef } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import * as DataLoader from 'dataloader';
 import { Observable } from 'rxjs';
@@ -45,10 +45,9 @@ export class DataLoaderInterceptor implements NestInterceptor {
     if (ctx[NEST_LOADER_CONTEXT_KEY] === undefined) {
       ctx[NEST_LOADER_CONTEXT_KEY] = async (type: string) : Promise<NestDataLoader<any, any>> => {
         if (ctx[type] === undefined) {
-          try {           
-            const contextId = ContextIdFactory.getByRequest(ctx.req);         
-            ctx[type] = (await this.moduleRef
-              .resolve<NestDataLoader<any, any>>(type, contextId, { strict: false }))
+          try {                   
+            ctx[type] = this.moduleRef
+              .get<NestDataLoader<any, any>>(type, { strict: false })
               .generateDataLoader();
           } catch (e) {
             throw new InternalServerErrorException(`The loader ${type} is not provided` + e);

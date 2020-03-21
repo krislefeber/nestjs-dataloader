@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { APP_INTERCEPTOR, ModuleRef, ContextIdFactory } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
-import DataLoader from 'dataloader';
+import * as DataLoader from 'dataloader';
 import { Observable } from 'rxjs';
 
 /**

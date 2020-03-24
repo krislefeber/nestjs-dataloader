@@ -11,9 +11,9 @@
     "prepare": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@nestjs/common": "^6.11.0",
-    "@nestjs/core": "^6.11.0",
-    "@nestjs/graphql": "6.5.3",
+    "@nestjs/common": "^7.0.5",
+    "@nestjs/core": "^7.0.5",
+    "@nestjs/graphql": "^7.0.14",
     "dataloader": "^2.0.0",
     "rxjs": "^6.5.4"
   },

@@ -8,7 +8,9 @@
   "scripts": {
     "prebuild": "rm -rf ./dist",
     "build": "tsc -p tsconfig.json",
-    "prepare": "tsc -p tsconfig.json"
+    "prepare": "tsc -p tsconfig.json",
+    "start": "ts-node -r tsconfig-paths/register example/src/main.ts",
+    "test": "jest"
   },
   "dependencies": {
     "dataloader": "^2.0.0",
@@ -22,12 +24,20 @@
     "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {
+    "@nestjs/cli": "^7.1.2",
     "@nestjs/common": "^7.0.5",
     "@nestjs/core": "^7.0.5",
     "@nestjs/graphql": "^7.0.15",
+    "@nestjs/platform-express": "^7.0.7",
+    "@nestjs/testing": "^7.0.7",
+    "@types/jest": "^25.2.1",
     "apollo-server-express": "^2.9.16",
     "graphql": "^14.1.1",
+    "jest": "^25.2.7",
     "reflect-metadata": "^0.1.12",
+    "supertest": "^4.0.2",
+    "ts-jest": "^25.3.1",
+    "ts-node": "^8.8.2",
     "typescript": "^3.7.4"
   },
   "types": "index.d.ts",
@@ -36,5 +46,22 @@
     "nestjs",
     "dataloader",
     "graphql"
-  ]
+  ],
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "collectCoverage": true,
+    "globals": {
+      "ts-jest": {
+        "diagnostics": {
+          "warnOnly": true
+        }
+      }
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "collectCoverageFrom": [
+      "index.ts"
+    ]
+  }
 }

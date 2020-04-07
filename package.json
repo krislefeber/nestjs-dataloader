@@ -17,9 +17,9 @@
     "rxjs": "^6.5.4"
   },
   "peerDependencies": {
-    "@nestjs/common": "^6.11.0 || ^7.0.0",
-    "@nestjs/core": "^6.11.0 || ^7.0.0",
-    "@nestjs/graphql": "^6.5.3 || ^7.0.0",
+    "@nestjs/common": "^7.0.0",
+    "@nestjs/core": "^7.0.0",
+    "@nestjs/graphql": "^7.0.0",
     "graphql": "^14.1.1",
     "reflect-metadata": "^0.1.12"
   },

@@ -11,7 +11,7 @@ export class AccountResolver {
     @Args({ name: "ids", type: () => [String] }) ids: string[],
     @Loader(AccountLoader.name)
     accountLoader: DataLoader<Account["id"], Account>
-  ): Promise<Account[]> {
+  ) {
     return accountLoader.loadMany(ids);
   }
 }

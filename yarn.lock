@@ -108,15 +108,15 @@
     "@types/yargs" "^13.0.0"
 
 "@nestjs/common@^7.0.5":
-  version "7.0.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.0.7.tgz#c79b742d9181dc5c8fda51b60bbf69c553cec3cf"
-  integrity sha512-qAYtNtEv5GvHOeHEJVYOHYeqT+vVMW4YM63D8xWAAkQRcFUFDO9oRzi+Y27gRA1nY7DfgMk2OO5bD4+OzIm//g==
+  version "7.0.8"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.0.8.tgz#f36e22aafd1a64b3b78a5a8d34bad71b6d867fc5"
+  integrity sha512-NHY4tUni5aDnIYFtRqKLTp74bIXXbf7Vy8pI0HtwiaMKwr6BU+5PD6ldzapL7H7pp3YmT3lvW/st9V7lT5ld2Q==
   dependencies:
     axios "0.19.2"
     cli-color "2.0.0"
     iterare "1.2.0"
     tslib "1.11.1"
-    uuid "7.0.2"
+    uuid "7.0.3"
 
 "@nestjs/core@^7.0.5":
   version "7.0.7"

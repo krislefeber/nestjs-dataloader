@@ -139,11 +139,11 @@
     uuid "7.0.3"
 
 "@nestjs/graphql@^7.0.15":
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-7.3.1.tgz#004b8c38f59026563fd2fd8e1325578fa4308b86"
-  integrity sha512-X7xRiDoIcB+dJPVi9n0fe5OSPi0KmXaLzbuQ9h9rcic715ImDKNGy/gicLsrS59RzHpFamLTZhme181eAsTeTg==
+  version "7.3.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-7.3.3.tgz#8b48abc42858e7df0f136eb69b16445c719da039"
+  integrity sha512-R+3iTi7DIbikoT22Ye3FXCX5DICjl0Qz/RQsjVKFBM+yYTI2ZW1P2Zaxmfgf34U/W9Cz0C0Vj8yhkvCMFAFoKQ==
   dependencies:
-    "@nestjs/mapped-types" "0.0.1"
+    "@nestjs/mapped-types" "0.0.3"
     chokidar "3.3.1"
     fast-glob "3.2.2"
     iterall "1.2.2"
@@ -157,10 +157,10 @@
     "@apollo/gateway" "^0.14.0"
     ts-morph "^7.0.0"
 
-"@nestjs/mapped-types@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-0.0.1.tgz#ff82149301d3d08bcacae2b392d85e24e5bee02b"
-  integrity sha512-4G4Ui7Sj0UqXiZsUFk/6cPD3K7uZEFSElzkOftaJ3/lXW+HUi1/vfWXabF53qrzO1enTRQDxt1plDbP6SsqXEg==
+"@nestjs/mapped-types@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-0.0.3.tgz#7b50206935452e74a270ed9a07ad05a6305b0b42"
+  integrity sha512-PKxWOVaMyvj9/82afLpMZ/+Pb5JacCURRP/FY/tCDtsoS+MABeQGj2oqbtH4uQUiL4n+H0IigvQGHWQ1zPPknA==
 
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"

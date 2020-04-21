@@ -139,9 +139,9 @@
     uuid "7.0.3"
 
 "@nestjs/graphql@^7.0.15":
-  version "7.3.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-7.3.3.tgz#8b48abc42858e7df0f136eb69b16445c719da039"
-  integrity sha512-R+3iTi7DIbikoT22Ye3FXCX5DICjl0Qz/RQsjVKFBM+yYTI2ZW1P2Zaxmfgf34U/W9Cz0C0Vj8yhkvCMFAFoKQ==
+  version "7.3.4"
+  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-7.3.4.tgz#04b89d4d2e0ec88d9e01d8a727e40fbd075d2856"
+  integrity sha512-C9dI7gGTj1xsNJ7SCkgPre15g2XmrZib0EeC2uKx5ZQZCOC7O/IZbQ+pcodlSHYH4Ef2UOj2hotuXufVY9iMtw==
   dependencies:
     "@nestjs/mapped-types" "0.0.3"
     chokidar "3.3.1"

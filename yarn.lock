@@ -139,9 +139,9 @@
     uuid "7.0.3"
 
 "@nestjs/graphql@^7.0.15":
-  version "7.3.5"
-  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-7.3.5.tgz#1d344cc05ec608bc0c1872c3960b5eee71edae4d"
-  integrity sha512-7BZPF7pxusYLaIYoe1y1Kz6F8qnWPWm/6qx6XXTiMn+RePyQT1w8sBYrWpVc5T4Y/v5odz1zqRK+E4HGwPHAWg==
+  version "7.3.7"
+  resolved "https://registry.yarnpkg.com/@nestjs/graphql/-/graphql-7.3.7.tgz#ba5b007f4e5c996947568180dc6d3e6bb49ddb57"
+  integrity sha512-D0eI/nczAhr20IQZ/3h/yRLatUQLUUuWv9w30fSuuanTmcPGopQelcEjDprkrMO7xa9a2ZMYFmvdYjWE7TodZw==
   dependencies:
     "@nestjs/mapped-types" "0.0.3"
     chokidar "3.4.0"
@@ -151,7 +151,7 @@
     merge-graphql-schemas "1.7.8"
     normalize-path "3.0.0"
     tslib "1.11.1"
-    uuid "7.0.3"
+    uuid "8.0.0"
   optionalDependencies:
     "@apollo/federation" "^0.14.0"
     "@apollo/gateway" "^0.14.0"
@@ -2571,6 +2571,11 @@ uuid@7.0.3, uuid@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
   integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
+
+uuid@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.0.0.tgz#bc6ccf91b5ff0ac07bbcdbf1c7c4e150db4dbb6c"
+  integrity sha512-jOXGuXZAWdsTH7eZLtyXMqUb9EcWMGZNbL9YcGBJl4MH4nrxHmZJhEHvyLFrkxo+28uLb/NYRcStH48fnD0Vzw==
 
 uuid@^3.1.0:
   version "3.3.3"

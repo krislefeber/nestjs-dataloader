@@ -4,6 +4,8 @@ import { GraphQLModule } from "@nestjs/graphql";
 import { createTestClient } from "apollo-server-testing";
 import gql from "graphql-tag";
 import { AppModule } from "./../src/app.module";
+import { Factory } from 'typeorm-factory'
+import { Account } from "../src/account/account.entity";
 
 describe("AppModule", () => {
   let app: INestApplication;
@@ -29,6 +31,8 @@ describe("AppModule", () => {
   it("defined", () => expect(app).toBeDefined());
 
   it("/graphql(POST) getAccounts", async () => {
+    const f = new Factory(Account).attr('name', 'name')
+    const account = await f.create()
     const { query } = apolloClient;
     const result = await query({
       query: gql`
@@ -39,13 +43,9 @@ describe("AppModule", () => {
         }
       `,
       variables: {
-        ids: ["id"],
+        ids: [account.id],
       },
     });
-    expect(result.errors).toMatchInlineSnapshot(`
-      Array [
-        [GraphQLError: The loader AccountLoader is not providedError: Nest could not find AccountLoader element (this provider does not exist in the current context)],
-      ]
-    `);
+    expect(result.errors).toBeUndefined()
   });
 });

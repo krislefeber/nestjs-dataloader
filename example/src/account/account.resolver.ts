@@ -1,6 +1,6 @@
 import { Resolver, Args, Query, ID } from "@nestjs/graphql";
 import * as DataLoader from "dataloader";
-import { Loader } from "../../..";
+import { Loader } from "../../../index";
 import { Account } from "./account.entity";
 import { AccountLoader } from "./account.loader";
 

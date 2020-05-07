@@ -9,5 +9,5 @@ export class Account {
   readonly id: string;
 
   @Column()
-  readonly name: string
+  readonly name: string;
 }

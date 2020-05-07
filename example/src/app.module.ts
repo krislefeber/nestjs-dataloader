@@ -12,11 +12,11 @@ import { AccountModule } from "./account/account.module";
     }),
     TypeOrmModule.forRoot({
       type: "sqlite",
-      database: "example",
-      entities: [join(__dirname, "./account/account.[t|j]s")],
+      database: "sample",
+      entities: [join(__dirname, "./**/*.entity.[t|j]s")],
       synchronize: true,
     }),
     AccountModule,
-  ],
+  ]
 })
 export class AppModule {}

@@ -1,5 +1,4 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import request from "supertest";
 import { INestApplication } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
 import { createTestClient } from "apollo-server-testing";
@@ -33,8 +32,8 @@ describe("AppModule", () => {
     const { query } = apolloClient;
     const result = await query({
       query: gql`
-        query {
-          getAccounts($ids: [String!]!) {
+        query q($ids: [ID!]!) {
+          getAccounts(ids: $ids) {
             id
           }
         }
@@ -45,7 +44,7 @@ describe("AppModule", () => {
     });
     expect(result.errors).toMatchInlineSnapshot(`
       Array [
-        [GraphQLError: AuthenticationError],
+        [GraphQLError: The loader AccountLoader is not providedError: Nest could not find AccountLoader element (this provider does not exist in the current context)],
       ]
     `);
   });

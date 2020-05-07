@@ -12,7 +12,5 @@ describe("AccountResolver", () => {
     resolver = module.get<AccountResolver>(AccountResolver);
   });
 
-  it("should be defined", () => {
-    expect(resolver).toBeDefined();
-  });
+  it("should be defined", () => expect(resolver).toBeDefined());
 });

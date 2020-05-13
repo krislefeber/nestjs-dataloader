@@ -18,6 +18,11 @@ import { Observable } from 'rxjs';
 export interface NestDataLoader<ID, Type> {
   /**
    * Should return a new instance of dataloader each time
+   * @params ctx: the graphql execution context
+   */
+  generateDataLoader(ctx: any): DataLoader<ID, Type>;
+    /**
+   * Should return a new instance of dataloader each time
    */
   generateDataLoader(): DataLoader<ID, Type>;
 }
@@ -48,7 +53,7 @@ export class DataLoaderInterceptor implements NestInterceptor {
           try {
             ctx[type] = this.moduleRef
               .get<NestDataLoader<any, any>>(type, { strict: false })
-              .generateDataLoader();
+              .generateDataLoader(ctx);
           } catch (e) {
             throw new InternalServerErrorException(
               `The loader ${type} is not provided` + e

@@ -5,11 +5,11 @@ import {
   Injectable,
   InternalServerErrorException,
   NestInterceptor,
-} from "@nestjs/common";
-import { APP_INTERCEPTOR, ModuleRef } from "@nestjs/core";
-import { GqlExecutionContext } from "@nestjs/graphql";
-import DataLoader = require("dataloader");
-import { Observable } from "rxjs";
+} from '@nestjs/common';
+import { APP_INTERCEPTOR, ModuleRef } from '@nestjs/core';
+import { GqlExecutionContext } from '@nestjs/graphql';
+import DataLoader from 'dataloader';
+import { Observable } from 'rxjs';
 
 /**
  * This interface will be used to generate the initial data loader.
@@ -34,7 +34,7 @@ const NEST_LOADER_CONTEXT_KEY: string = "NEST_LOADER_CONTEXT_KEY";
 
 @Injectable()
 export class DataLoaderInterceptor implements NestInterceptor {
-  constructor(private readonly moduleRef: ModuleRef) {}
+  constructor(private readonly moduleRef: ModuleRef) { }
   /**
    * @inheritdoc
    */
@@ -43,9 +43,7 @@ export class DataLoaderInterceptor implements NestInterceptor {
     const ctx = graphqlExecutionContext.getContext();
 
     if (ctx[NEST_LOADER_CONTEXT_KEY] === undefined) {
-      ctx[NEST_LOADER_CONTEXT_KEY] = async (
-        type: string
-      ): Promise<NestDataLoader<any, any>> => {
+      ctx[NEST_LOADER_CONTEXT_KEY] = async (type: string): Promise<NestDataLoader<any, any>> => {
         if (ctx[type] === undefined) {
           try {
             ctx[type] = this.moduleRef
@@ -68,11 +66,10 @@ export class DataLoaderInterceptor implements NestInterceptor {
 /**
  * The decorator to be used within your graphql method.
  */
-export const Loader = createParamDecorator(
-  async (data: unknown, context: ExecutionContext) => {
-    const ctx = GqlExecutionContext.create(context).getContext();
-    if (ctx[NEST_LOADER_CONTEXT_KEY] === undefined) {
-      throw new InternalServerErrorException(`
+export const Loader = createParamDecorator(async (data: any, context: ExecutionContext & { [key: string]: any }) => {
+  const ctx: any = GqlExecutionContext.create(context).getContext();
+  if (ctx[NEST_LOADER_CONTEXT_KEY] === undefined) {
+    throw new InternalServerErrorException(`
             You should provide interceptor ${DataLoaderInterceptor.name} globally with ${APP_INTERCEPTOR}
           `);
     }

@@ -1,5 +1,8 @@
 # NestJS Dataloader
 
+![Node.js CI](https://github.com/krislefeber/nestjs-dataloader/workflows/Node.js%20CI/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/krislefeber/nestjs-dataloader/badge.svg?branch=master)](https://coveralls.io/github/krislefeber/nestjs-dataloader?branch=master)
+
 NestJS dataloader simplifies adding [graphql/dataloader](https://github.com/graphql/dataloader) to your NestJS project. DataLoader aims to solve the common N+1 loading problem.
 
 ## Installation

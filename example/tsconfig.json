@@ -7,8 +7,8 @@
     "experimentalDecorators": true,
     "target": "es6",
     "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./"
+    "outDir": "./dist"
   },
-  "exclude": ["node_modules", "dist", "example"]
+  "include": ["src"],
+  "exclude": ["node_modules", "*.spec.ts"]
 }

@@ -1,15 +1,14 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { INestApplication } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
-import { createTestClient } from "apollo-server-testing";
 import gql from "graphql-tag";
 import { AppModule } from "./../src/app.module";
-import { Factory } from 'typeorm-factory'
+import { Factory } from "typeorm-factory";
 import { Account } from "../src/account/account.entity";
 
 describe("AppModule", () => {
   let app: INestApplication;
-  let apolloClient: ReturnType<typeof createTestClient>;
+  let server: GraphQLModule["apolloServer"];
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -19,11 +18,10 @@ describe("AppModule", () => {
     app = moduleFixture.createNestApplication();
     await app.init();
 
-    const module: GraphQLModule = moduleFixture.get<GraphQLModule>(
-      GraphQLModule
-    );
-    // apolloServer is protected, we need to cast module to any to get it
-    apolloClient = createTestClient((module as any).apolloServer);
+    const module: GraphQLModule =
+      moduleFixture.get<GraphQLModule>(GraphQLModule);
+
+    server = module.apolloServer;
   });
 
   afterAll(() => app.close());
@@ -31,10 +29,9 @@ describe("AppModule", () => {
   it("defined", () => expect(app).toBeDefined());
 
   it("/graphql(POST) getAccounts", async () => {
-    const f = new Factory(Account).attr('name', 'name')
-    const account = await f.create()
-    const { query } = apolloClient;
-    const result = await query({
+    const f = new Factory(Account).attr("name", "name");
+    const account = await f.create();
+    const result = await server.executeOperation({
       query: gql`
         query q($ids: [ID!]!) {
           getAccounts(ids: $ids) {
@@ -46,6 +43,6 @@ describe("AppModule", () => {
         ids: [account.id],
       },
     });
-    expect(result.errors).toBeUndefined()
+    expect(result.errors).toBeUndefined();
   });
 });

@@ -10,6 +10,7 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "esModuleInterop": true,
+    "noUnusedLocals": true
   },
   "exclude": ["node_modules", "dist", "example"]
 }

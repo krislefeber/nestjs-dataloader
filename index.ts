@@ -8,12 +8,10 @@ import {
 } from '@nestjs/common';
 import { APP_INTERCEPTOR, ModuleRef, ContextIdFactory } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
-import * as DataLoader from 'dataloader';
-import { Observable } from 'rxjs';
-import { idText } from 'typescript';
+import DataLoader = require("dataloader");
 
 /**
- * This interface will be used to generate the initial data loader.                
+ * This interface will be used to generate the initial data loader.              
  * The concrete implementation should be added as a provider to your module.
  */
 export interface NestDataLoader<ID, Type> {
@@ -48,8 +46,8 @@ export class DataLoaderInterceptor implements NestInterceptor {
         contextId: ContextIdFactory.create(),
         getLoader: (type: string) : Promise<NestDataLoader<any, any>> => {
           if (ctx[type] === undefined) {
-            try {           
-              ctx[type] = (async () => { 
+            try {
+              ctx[type] = (async () => {
                 return (await this.moduleRef.resolve<NestDataLoader<any, any>>(type, ctx[NEST_LOADER_CONTEXT_KEY].contextId, { strict: false }))
                   .generateDataLoader();
               })();

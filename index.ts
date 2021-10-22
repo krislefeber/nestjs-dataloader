@@ -9,7 +9,6 @@ import {
 import { APP_INTERCEPTOR, ModuleRef, ContextIdFactory } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import * as DataLoader from 'dataloader';
-import { Observable } from 'rxjs';
 import { idText } from 'typescript';
 
 /**
@@ -39,7 +38,7 @@ export class DataLoaderInterceptor implements NestInterceptor {
   /**
    * @inheritdoc
    */
-  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+  intercept(context: ExecutionContext, next: CallHandler) {
     const graphqlExecutionContext = GqlExecutionContext.create(context);
     const ctx = graphqlExecutionContext.getContext();
 

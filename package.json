@@ -27,8 +27,7 @@
     "reflect-metadata": "^0.1.12"
   },
   "dependencies": {
-    "dataloader": "^2.0.0",
-    "rxjs": "^6.5.4"
+    "dataloader": "^2.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.1.2",

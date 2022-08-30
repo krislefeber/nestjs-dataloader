@@ -1,14 +1,21 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { INestApplication } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
+import { ApolloServerBase } from 'apollo-server-core';
 import gql from "graphql-tag";
 import { AppModule } from "./../src/app.module";
-import { Factory } from "typeorm-factory";
+import { Factory } from '@linnify/typeorm-factory';
 import { Account } from "../src/account/account.entity";
+import { ApolloDriver } from "@nestjs/apollo";
+
+class AccountFactory extends Factory<Account> {
+  entity = Account;
+  name = 'name'
+}
 
 describe("AppModule", () => {
   let app: INestApplication;
-  let server: GraphQLModule["apolloServer"];
+  let apolloClient: ApolloServerBase;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -18,10 +25,8 @@ describe("AppModule", () => {
     app = moduleFixture.createNestApplication();
     await app.init();
 
-    const module: GraphQLModule =
-      moduleFixture.get<GraphQLModule>(GraphQLModule);
-
-    server = module.apolloServer;
+    const graphqlModule = app.get<GraphQLModule<ApolloDriver>>(GraphQLModule);
+    apolloClient = graphqlModule.graphQlAdapter?.instance;
   });
 
   afterAll(() => app.close());
@@ -29,9 +34,9 @@ describe("AppModule", () => {
   it("defined", () => expect(app).toBeDefined());
 
   it("/graphql(POST) getAccounts", async () => {
-    const f = new Factory(Account).attr("name", "name");
+    const f = new AccountFactory();
     const account = await f.create();
-    const result = await server.executeOperation({
+    const result = await apolloClient.executeOperation({
       query: gql`
         query q($ids: [ID!]!) {
           getAccounts(ids: $ids) {

@@ -11,7 +11,7 @@ export class AccountService {
   ) {}
 
   async findByIds(ids: readonly string[]) {
-    return this.accounts.find({
+    return this.accounts.findBy({
       id: In(ids as string[]),
     });
   }

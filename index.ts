@@ -5,6 +5,7 @@ import {
   Injectable,
   InternalServerErrorException,
   NestInterceptor,
+  Type,
 } from '@nestjs/common';
 import { APP_INTERCEPTOR, ModuleRef, ContextIdFactory } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
@@ -48,8 +49,8 @@ export class DataLoaderInterceptor implements NestInterceptor {
         contextId: ContextIdFactory.create(),
         getLoader: (type: string) : Promise<NestDataLoader<any, any>> => {
           if (ctx[type] === undefined) {
-            try {           
-              ctx[type] = (async () => { 
+            try {
+              ctx[type] = (async () => {
                 return (await this.moduleRef.resolve<NestDataLoader<any, any>>(type, ctx[NEST_LOADER_CONTEXT_KEY].contextId, { strict: false }))
                   .generateDataLoader();
               })();
@@ -68,7 +69,7 @@ export class DataLoaderInterceptor implements NestInterceptor {
 /**
  * The decorator to be used within your graphql method.
  */
-export const Loader = createParamDecorator(async (data: any, context: ExecutionContext & { [key: string]: any }) => {
+export const Loader = createParamDecorator(async (data: Type<NestDataLoader<any, any>>, context: ExecutionContext & { [key: string]: any }) => {
   const ctx: any = GqlExecutionContext.create(context).getContext();
   if (ctx[NEST_LOADER_CONTEXT_KEY] === undefined) {
     throw new InternalServerErrorException(`

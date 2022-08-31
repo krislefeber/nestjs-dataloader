@@ -1,7 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { INestApplication } from "@nestjs/common";
-import { GraphQLModule } from "@nestjs/graphql";
-import { createTestClient } from "apollo-server-testing";
+import request from 'supertest';
 import gql from "graphql-tag";
 import { AppModule } from "./../src/app.module";
 import { Factory } from 'typeorm-factory'
@@ -9,7 +8,6 @@ import { Account } from "../src/account/account.entity";
 
 describe("AppModule", () => {
   let app: INestApplication;
-  let apolloClient: ReturnType<typeof createTestClient>;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -18,12 +16,6 @@ describe("AppModule", () => {
 
     app = moduleFixture.createNestApplication();
     await app.init();
-
-    const module: GraphQLModule = moduleFixture.get<GraphQLModule>(
-      GraphQLModule
-    );
-    // apolloServer is protected, we need to cast module to any to get it
-    apolloClient = createTestClient((module as any).apolloServer);
   });
 
   afterAll(() => app.close());
@@ -33,8 +25,8 @@ describe("AppModule", () => {
   it("/graphql(POST) getAccounts", async () => {
     const f = new Factory(Account).attr('name', 'name')
     const account = await f.create()
-    const { query } = apolloClient;
-    const result = await query({
+    const query = request(app.getHttpServer()).post;
+    const result = await query('/graphql',{
       query: gql`
         query q($ids: [ID!]!) {
           getAccounts(ids: $ids) {
@@ -43,7 +35,7 @@ describe("AppModule", () => {
         }
       `,
       variables: {
-        ids: [account.id],
+        ids: [1],
       },
     });
     expect(result.errors).toBeUndefined()

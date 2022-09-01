@@ -9,7 +9,7 @@ export class AccountResolver {
   @Query(() => [Account])
   public getAccounts(
     @Args({ name: "ids", type: () => [ID] }) ids: string[],
-    @Loader(AccountLoader.name)
+    @Loader(AccountLoader)
     accountLoader: DataLoader<Account["id"], Account>
   ): Promise<(Account | Error)[]> {
     return accountLoader.loadMany(ids);

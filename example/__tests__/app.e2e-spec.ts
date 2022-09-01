@@ -35,7 +35,7 @@ describe("AppModule", () => {
         }
       `,
       variables: {
-        ids: [1],
+        ids: [account.id],
       },
     });
     expect(result.errors).toBeUndefined()

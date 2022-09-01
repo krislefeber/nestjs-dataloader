@@ -88,7 +88,7 @@ export class AccountResolver {
 }
 ```
 
-The important thing to note is that the parameter of the `@Loader` decorator is the name of the `NestDataLoader` class we want to be injected to the method. The DataLoader library will handle bulk retrieval and caching of our requests. Note that the caching is stored on a per-request basis.
+The important thing to note is that the parameter of the `@Loader` decorator is the entity/class of the `NestDataLoader` we want to be injected to the method. The DataLoader library will handle bulk retrieval and caching of our requests. Note that the caching is stored on a per-request basis.
 
 ## Contributing
 

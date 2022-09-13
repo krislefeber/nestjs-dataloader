@@ -45,7 +45,7 @@
     "typeorm-factory": "^0.0.14",
     "typescript": "4.7.4"
   },
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "jest": {
     "transform": {
       "^.+\\.tsx?$": "ts-jest"

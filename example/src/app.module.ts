@@ -10,7 +10,6 @@ import { AccountModule } from "./account/account.module";
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
-      debug: true,
     }),
     TypeOrmModule.forRoot({
       type: "sqlite",
@@ -19,6 +18,6 @@ import { AccountModule } from "./account/account.module";
       synchronize: true,
     }),
     AccountModule,
-  ]
+  ],
 })
 export class AppModule {}
